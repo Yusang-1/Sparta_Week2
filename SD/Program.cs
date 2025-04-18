@@ -60,17 +60,20 @@ namespace SD
             string getString;
             LoadGear(sword, armor);
 
-        FirstMain:
+        
             Console.Clear();
-            Console.WriteLine("환영");
-            Console.WriteLine("이름 입력");
+        FirstMain:
+            Console.WriteLine("\n환영합니다.");
+            Console.WriteLine("\n이름을 입력해주세요\n");
             hero.name = (Console.ReadLine());
 
 
             Console.Clear();
-            Console.WriteLine("직업");
-            Console.WriteLine("전사, 도적");
+            Console.WriteLine("\n직업을 선택해 주세요");
+            Console.WriteLine("\n1.전사\n2.도적\n");
 
+            Console.WriteLine("\n번호를 입력해 주세요");
+            Console.Write(">>");
             getInt = Input(Console.ReadLine());
 
             if (getInt == 1)
@@ -85,15 +88,17 @@ namespace SD
             }
             else
             {
-                Console.WriteLine("잘못된 값 입력함");
+                Console.Clear();
+                Console.WriteLine("잘못된 값 입력함\n");
                 goto FirstMain;
             }
 
-
-        SecondMain:
             Console.Clear();
-            Console.WriteLine("입력");
-            Console.WriteLine("1.스텟  2.인벤  3.상점  4.던전 입장  5.휴식");
+        SecondMain:
+            Console.WriteLine("\n1.스텟\n2.인벤\n3.상점\n4.던전 입장\n5.휴식");
+            Console.WriteLine("\n행동을 입력해주세요");
+            Console.Write(">>");
+
             getInt = Input(Console.ReadLine());
 
             if (getInt == 1)
@@ -119,26 +124,32 @@ namespace SD
                 Console.WriteLine("던전 Lv2\t방어력 11이상 권장\n");
                 Console.WriteLine("던전 Lv3\t방어력 17이상 권장\n");
                 Console.WriteLine("0.나가기");
-
+                Console.WriteLine("\n번호를 입력해 주세요");
+                Console.Write(">>");
                 getInt = Input(Console.ReadLine());
 
                 if (getInt == 1)
                 {
                     GoToDungeon(5, hero.stats[1], hero);
+                    Console.Clear();
                     goto SecondMain;
                 }
                 else if (getInt == 2)
                 {
                     GoToDungeon(11, hero.stats[1], hero);
+                    Console.Clear();
                     goto SecondMain;
                 }
                 else if (getInt == 3)
                 {
                     GoToDungeon(17, hero.stats[1], hero);
+                    Console.Clear();
                     goto SecondMain;
                 }
                 else
                 {
+                    Console.Clear();
+                    Console.WriteLine("잘못된 값 입력");
                     goto SecondMain;
                 }
             }
@@ -148,7 +159,7 @@ namespace SD
                 Console.WriteLine("500골드를 내고 휴식을 취하시겠습니까?\n");
                 Console.WriteLine("현재 보유 골드 : {0}\n", hero.gold);
                 Console.WriteLine("1.예  2.아니요\n");
-
+                Console.Write(">>");
                 getInt = Input(Console.ReadLine());
 
                 if (getInt == 1)
@@ -156,9 +167,18 @@ namespace SD
                     GetSomeRest(hero);
                 }
                 else if (getInt == 2)
+                {
+                    Console.Clear();
                     goto SecondMain;
+                }
                 else
+                {
+                    Console.Clear();
+                    Console.WriteLine("잘못된 값 입력");
                     goto SecondMain;
+                }
+                Console.Clear();
+                Console.WriteLine("잘못된 값 입력");
                 goto SecondMain;
             }
             else
@@ -166,22 +186,20 @@ namespace SD
                 Console.WriteLine("잘못된 값 입력함");
                 goto SecondMain;
             }
-
-
         }
 
         static void LoadGear(Sword sword, Armor armor)
         {
             sword.name = ["낡은 검", "청동 도끼", "스파르타의 창"];
-            sword.description = ["쉽게 볼 수 있는 낡은 검 입니다.", "어디선가 사용됐던거 같은 도끼입니다.", "스파르타의 전사들이 사용했다는 전설의 창입니다."];
+            sword.description = ["쉽게 볼 수 있는 낡은 검\t", "어디선가 사용됐던거 같은 도끼", "스파르타에서 사용한 전설의 창"];
             sword.value = ["600", "1500", "3000"];
             sword.sellValue = ["300", "750", "1500"];
             sword.atk = [2, 5, 7];
             sword.equipped = ["N", "N", "N"];
             sword.type = [1, 1, 1];
 
-            armor.name = ["수련자 갑옷", "무쇠 갑옷", "스파르타의 갑옷"];
-            armor.description = ["수련에 도움을 주는 갑옷입니다.", "무쇠로 만들어져 튼튼한 갑옷입니다.", "스파르타의 전사들이 사용했다는 전설의 갑옷입니다."];
+            armor.name = ["수련자 갑옷", "무쇠 갑옷", "스파르타 갑옷"];
+            armor.description = ["수련에 도움을 주는 갑옷\t", "무쇠로 만들어져 튼튼한 갑옷\t", "스파르타에서 사용한 전설의 갑옷"];
             armor.value = ["1000", "2000", "3500"];
             armor.sellValue = ["500", "1000", "1750"];
             armor.def = [5, 9, 15];
@@ -196,9 +214,9 @@ namespace SD
             int maxExp = hero.maxExp[hero.lv];
             int exp = hero.exp;
             int expSquare = exp * 10 / maxExp;
-        StatsAgain:
             Console.Clear();
-            Console.WriteLine("\t[스텟]\t\n");
+        StatsAgain:
+            Console.WriteLine("\n\t[스텟]\t\n");
             Console.WriteLine("Lv. {0}", hero.lv);
             Console.WriteLine("{0} ({1})", hero.name, hero.job);
 
@@ -244,7 +262,8 @@ namespace SD
 
 
             Console.WriteLine("\n0.나가기");
-            Console.WriteLine("입력해주세요");
+            Console.WriteLine("\n번호를 입력해주세요");
+            Console.Write(">>");
 
             getInt = Input(Console.ReadLine());
 
@@ -254,6 +273,7 @@ namespace SD
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("잘못된 값 입력함");
                 goto StatsAgain;
             }
@@ -261,25 +281,26 @@ namespace SD
 
         static void ShowInventory(Hero hero)
         {
-        InventoryMain:
             int getInt = 0;
             string getString;
             int invListCount = hero.inventoryList.Count;
             Console.Clear();
-            Console.WriteLine("\t[인벤토리]\t\n");
+        InventoryMain:
+            Console.WriteLine("\n\t[인벤토리]\t\n");
 
             PrintInvenList(hero, invListCount, 1);
 
-            Console.WriteLine("\t\t\t골드 : {0}G", hero.gold);
+            Console.WriteLine("\n\t\t\t\t\t골드 : {0}G", hero.gold);
 
             Console.WriteLine("\n1.장착관리  0.나가기");
-            Console.WriteLine("입력해주세요");
-
+            Console.WriteLine("\n번호를 입력해주세요");
+            Console.Write(">>");
             getInt = Input(Console.ReadLine());
 
             if (getInt == 1)
             {
                 InventoryManagement(hero);
+                Console.Clear();
                 goto InventoryMain;
             }
             else if (getInt == 0)
@@ -288,29 +309,33 @@ namespace SD
             }
             else
             {
+                Console.Clear();
+                Console.WriteLine("잘못된 값 입력함");
                 goto InventoryMain;
             }
         }
 
         static void InventoryManagement(Hero hero)
         {
-        InvManMain:
             int getInt = 0;
             string getString;
             int invListCount = hero.inventoryList.Count;
             Console.Clear();
-            Console.WriteLine("\t[인벤토리 장착관리]\t\n");
+        InvManMain:
+            Console.WriteLine("\n\t[인벤토리 장착관리]\t\n");
 
             PrintInvenList(hero, invListCount, 2);
 
             Console.WriteLine("\n장착할 장비의 번호를 선택해주세요  0.나가기");
-            Console.WriteLine("입력해주세요");
+            Console.WriteLine("번호를 입력해주세요");
+            Console.Write(">>");
 
             getInt = Input(Console.ReadLine());
 
             if (getInt > 0 && getInt <= invListCount)
             {
                 InventoryEquip(hero, getInt);
+                Console.Clear();
                 goto InvManMain;
             }
             else if (getInt == 0)
@@ -319,6 +344,8 @@ namespace SD
             }
             else
             {
+                Console.Clear();
+                Console.WriteLine("잘못된 갑 입력함");
                 goto InvManMain;
             }
         }
@@ -330,16 +357,18 @@ namespace SD
             int swordCount = sword.name.Length;
             int armorCount = armor.name.Length;
             string getString;
-            string[] sArr = new string[7];
-        StoreAgain:
+            string[] sArr = new string[7];  
+            
             Console.Clear();
+        StoreAgain:
             Console.WriteLine("\t[상점]\t\n");
 
             PrintStoreItem(sword, armor, swordCount, armorCount, 1);
             Console.WriteLine("\n\t\t\t골드 : {0}G", hero.gold);
 
             Console.WriteLine("\n1.아이템 구매  2.아이템 판매  3.인벤토리  0.나가기");
-            Console.WriteLine("입력해주세요");
+            Console.WriteLine("\n번호를 입력해주세요");
+            Console.Write(">>");
 
             getInt = Input(Console.ReadLine());
 
@@ -350,6 +379,8 @@ namespace SD
 
                 if (iNumArr[0] == 0)
                 {
+                    Console.Clear();
+                    Console.WriteLine("잘못된 갑 입력함");
                     goto StoreAgain;
                 }
 
@@ -363,17 +394,43 @@ namespace SD
                         sword.value[iNumArr[0] - 1] = "구매한 상품입니다.";
 
                         Console.Clear();
+                    PurchaseComplete1:
                         Console.WriteLine("구매가 완료되었습니다.  0.나가기");
-                        Console.WriteLine("입력해주세요");
-
+                        Console.WriteLine("\n번호를 입력해주세요");
+                        Console.Write(">>");
                         getInt = Input(Console.ReadLine());
+
+                        if (getInt == 0)
+                        {
+                            Console.Clear();
+                            goto StoreAgain;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("잘못된 값 입력");
+                            goto PurchaseComplete1;
+                        }
                     }
                     else
                     {
+                    NotEnoughGold1:
                         Console.WriteLine("골드가 부족합니다.  0.나가기");
-                        Console.WriteLine("입력해주세요");
-
+                        Console.WriteLine("\n번호를 입력해주세요");
+                        Console.Write(">>");
                         getInt = Input(Console.ReadLine());
+
+                        if (getInt == 0)
+                        {
+                            Console.Clear();
+                            goto StoreAgain;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("잘못된 값 입력");
+                            goto NotEnoughGold1;
+                        }
                     }
 
                 }
@@ -387,34 +444,42 @@ namespace SD
                         armor.value[iNumArr[0] - 1] = "구매한 상품입니다.";
 
                         Console.Clear();
+                    PurchaseComplete2:
                         Console.WriteLine("\n구매가 완료되었습니다.  0.나가기");
-                        Console.WriteLine("입력해주세요");
-
+                        Console.WriteLine("\n번호를 입력해주세요");
+                        Console.Write(">>");
                         getInt = Input(Console.ReadLine());
 
                         if (getInt == 0)
                         {
+                            Console.Clear();                            
                             goto StoreAgain;
                         }
                         else
                         {
-                            goto StoreAgain;
+                            Console.Clear();
+                            Console.WriteLine("잘못된 값 입력");
+                            goto PurchaseComplete2;
                         }
                     }
                     else
                     {
+                    NotEnoughGold2:
                         Console.WriteLine("골드가 부족합니다.  0.나가기");
-                        Console.WriteLine("입력해주세요");
-
+                        Console.WriteLine("\n번호를 입력해주세요");
+                        Console.Write(">>");
                         getInt = Input(Console.ReadLine());
 
                         if (getInt == 0)
                         {
+                            Console.Clear();
                             goto StoreAgain;
                         }
                         else
                         {
-                            goto StoreAgain;
+                            Console.Clear();
+                            Console.WriteLine("잘못된 값 입력");
+                            goto NotEnoughGold2;
                         }
                     }
                 }
@@ -438,9 +503,11 @@ namespace SD
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("잘못된 값 입력함");
                 goto StoreAgain;
             }
+            Console.Clear();
             goto StoreAgain;
         }
 
@@ -452,14 +519,16 @@ namespace SD
             int iReturn;
             int[] iReturnArr;
             string getString;
-        PurchaseAgain:
+        
             Console.Clear();
+        PurchaseAgain:
             Console.WriteLine("\t[상점]\t\n");
 
             PrintStoreItem(sword, armor, swordCount, armorCount, 2);
 
             Console.WriteLine("\n구매할 아이템 번호 선택  0.나가기");
-            Console.WriteLine("입력해주세요");
+            Console.WriteLine("\n번호를 입력해주세요");
+            Console.Write(">>");
 
             getInt = Input(Console.ReadLine());
 
@@ -468,20 +537,24 @@ namespace SD
                 if (sword.value[getInt - 1] == "구매한 상품입니다.")
                 {
                     Console.Clear();
+                AleadyPurchased:
                     Console.WriteLine("\n이미 구매한 상품입니다.");
                     Console.WriteLine("\n0.나가기");
-                    Console.WriteLine("입력해주세요");
-
+                    Console.WriteLine("\n번호를 입력해주세요");
+                    Console.Write(">>");
 
                     getInt = Input(Console.ReadLine());
 
                     if (getInt == 0)
                     {
+                        Console.Clear();
                         goto PurchaseAgain;
                     }
                     else
                     {
-                        goto PurchaseAgain;
+                        Console.Clear();
+                        Console.WriteLine("잘못된 값 입력함");
+                        goto AleadyPurchased;
                     }
                 }
                 iReturn = PurchaseGear(getInt, sword);
@@ -493,19 +566,24 @@ namespace SD
                 if (armor.value[getInt - swordCount - 1] == "구매한 상품입니다.")
                 {
                     Console.Clear();
+                AleadyPurchased:
                     Console.WriteLine("\n이미 구매한 상품입니다.");
                     Console.WriteLine("\n0.나가기");
-                    Console.WriteLine("입력해주세요");
+                    Console.WriteLine("\n번호를 입력해주세요");
+                    Console.Write(">>");
 
                     getInt = Input(Console.ReadLine());
 
                     if (getInt == 0)
                     {
+                        Console.Clear();
                         goto PurchaseAgain;
                     }
                     else
                     {
-                        goto PurchaseAgain;
+                        Console.Clear();
+                        Console.WriteLine("잘못된 값 입력함");
+                        goto AleadyPurchased;
                     }
                 }
                 iReturn = PurchaseGear(getInt - swordCount, armor);
@@ -518,6 +596,7 @@ namespace SD
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("잘못된 값 입력함");
                 goto PurchaseAgain;
             }
@@ -526,15 +605,17 @@ namespace SD
         static int PurchaseGear(int iNum, Sword sword)
         {
             int getInt = 0;
-            string getString;
-        PurchaseAgain:
+            string getString;       
             Console.Clear();
+        PurchaseAgain:
             Console.WriteLine("\t[구매]\t\n");
 
             Console.WriteLine("- {0}\t | {1}\t | {2}\t | {3}", sword.name[iNum - 1], sword.atk[iNum - 1], sword.description[iNum - 1], sword.value[iNum - 1]);
 
 
             Console.WriteLine("\n구매하시겠습니까?\n1.예  2.아니요");
+            Console.WriteLine("\n번호를 입력해주세요");
+            Console.Write(">>");
 
             getInt = Input(Console.ReadLine());
 
@@ -549,6 +630,7 @@ namespace SD
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("잘못된 값 입력함");
                 goto PurchaseAgain;
             }
@@ -557,14 +639,17 @@ namespace SD
         {
             int getInt = 0;
             string getString;
-        PurchaseAgain:
+        
             Console.Clear();
+        PurchaseAgain:
             Console.WriteLine("\t[구매]\t\n");
 
             Console.WriteLine("- {0}\t | {1}\t | {2}\t | {3}", armor.name[iNum - 1], armor.def[iNum - 1], armor.description[iNum - 1], armor.value[iNum - 1]);
 
 
             Console.WriteLine("\n구매하시겠습니까?\n1.예  2.아니요");
+            Console.WriteLine("\n번호를 입력해주세요");
+            Console.Write(">>");
 
             getInt = Input(Console.ReadLine());
 
@@ -579,24 +664,26 @@ namespace SD
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("잘못된 값 입력함");
                 goto PurchaseAgain;
             }
         }
 
         static void SellGear(Hero hero)
-        {
-        SellInventoryMain:
+        {      
             int getInt2 = 0;
             string getString2;
             int invListCount = hero.inventoryList.Count;
             Console.Clear();
+        SellInventoryMain:
             Console.WriteLine("\t[상점 판매]\t\n");
 
             PrintInvenList(hero, invListCount, 2);
 
             Console.WriteLine("\n판매할 물건의 번호를 입력해주세요  0.나가기");
-            Console.WriteLine("입력해주세요");
+            Console.WriteLine("\n번호를 입력해주세요");
+            Console.Write(">>");
 
             getInt2 = Input(Console.ReadLine());
 
@@ -618,14 +705,22 @@ namespace SD
                 hero.inventoryList.Remove(hero.inventoryList[getInt2 - 1]);
 
                 Console.Clear();
+            PurchaseComplete:
                 Console.WriteLine("\n판매가 완료되었습니다.  0.나가기");
-                Console.WriteLine("입력해주세요");
+                Console.WriteLine("\n번호를 입력해주세요");
+                Console.Write(">>");
 
                 getInt2 = Input(Console.ReadLine());
 
                 if (getInt2 == 0)
                 {
                     goto SellInventoryMain;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("잘못된 값 입력함");
+                    goto PurchaseComplete;
                 }
             }
             else if (getInt2 == 0)
@@ -634,16 +729,18 @@ namespace SD
             }
             else
             {
-                return;
+                Console.Clear();
+                Console.WriteLine("잘못된 값 입력함");
+                goto SellInventoryMain;
             }
         }
 
         static void InventoryEquip(Hero hero, int getInt)
         {
-        EquipMain:
             int getInt2;
             string getString2;
             Console.Clear();
+        EquipMain:
             Console.WriteLine("\t[인벤토리 장착관리]\t\n");
 
             Console.WriteLine("- {0}\t   | {1}\t | {2}", hero.inventoryList[getInt - 1][0], hero.inventoryList[getInt - 1][1], hero.inventoryList[getInt - 1][2]);
@@ -651,7 +748,8 @@ namespace SD
             if (hero.inventoryList[getInt - 1][4] == "N")
             {
                 Console.WriteLine("\n1.장착  0.나가기");
-                Console.WriteLine("입력해주세요");
+                Console.WriteLine("\n번호를 입력해주세요");
+                Console.Write(">>");
 
                 getInt2 = Input(Console.ReadLine());
 
@@ -685,13 +783,16 @@ namespace SD
                 }
                 else
                 {
+                    Console.Clear();
+                    Console.WriteLine("잘못된 값 입력함");
                     goto EquipMain;
                 }
             }
             else
             {
                 Console.WriteLine("\n1.해제  0.나가기");
-                Console.WriteLine("입력해주세요");
+                Console.WriteLine("\n번호를 입력해주세요");
+                Console.Write(">>");
 
                 getInt2 = Input(Console.ReadLine());
 
@@ -705,6 +806,8 @@ namespace SD
                 }
                 else
                 {
+                    Console.Clear();
+                    Console.WriteLine("잘못된 값 입력함");
                     goto EquipMain;
                 }
             }
@@ -728,6 +831,8 @@ namespace SD
         }
         static void PrintInvenList(Hero hero, int invListCount, int printType)
         {
+            Console.WriteLine("\t이름\t\t능력치\t\t설명");
+            Console.WriteLine("----------------------------------------------------------------");
             if (printType == 1)
             {
                 for (int i = 0; i < invListCount; i++)
@@ -736,11 +841,11 @@ namespace SD
                     {
                         if (hero.inventoryList[i][5] == "1")
                         {
-                            Console.WriteLine("- {0}\t   | 공격력 +{1}\t | {2}", hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
+                            Console.WriteLine("- {0}\t   | 공격력 +{1}\t  | {2}\n", hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
                         }
                         else
                         {
-                            Console.WriteLine("- {0}\t   | 방어력 +{1}\t | {2}", hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
+                            Console.WriteLine("- {0}\t   | 방어력 +{1}\t  | {2}\n", hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
                         }
 
                     }
@@ -748,14 +853,15 @@ namespace SD
                     {
                         if (hero.inventoryList[i][5] == "1")
                         {
-                            Console.WriteLine("- [E]{0}\t   | 공격력 +{1}\t | {2}", hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
+                            Console.WriteLine("- [E]{0}\t   | 공격력 +{1}\t  | {2}\n", hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
                         }
                         else
                         {
-                            Console.WriteLine("- [E]{0}\t   | 방어력 +{1}\t | {2}", hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
+                            Console.WriteLine("- [E]{0}\t   | 방어력 +{1}\t  | {2}\n", hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
                         }
                     }
                 }
+                Console.WriteLine("----------------------------------------------------------------");
             }
             else if (printType == 2)
             {
@@ -763,39 +869,56 @@ namespace SD
                 {
                     if (hero.inventoryList[i][4] == "N")
                     {
-                        Console.WriteLine("-{0} {1}\t   | {2}\t | {3}", i + 1, hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
+                        if (hero.inventoryList[i][5] == "1")
+                        {
+                            Console.WriteLine("-{0} {1}\t   | 공격력 +{2}\t  | {3}\n", i + 1, hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("-{0} {1}\t   | 방어력 +{2}\t  | {3}\n", i + 1, hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
+                        }    
                     }
                     else if (hero.inventoryList[i][4] == "E")
                     {
-                        Console.WriteLine("-{0} [E]{1}\t   | {2}\t | {3}", i + 1, hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
+                        if (hero.inventoryList[i][5] == "1")
+                        {
+                            Console.WriteLine("-{0} [E]{1}\t   | 공격력 +{2}\t  | {3}\n", i + 1, hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("-{0} [E]{1}\t   | 방어력 +{2}\t  | {3}\n", i + 1, hero.inventoryList[i][0], hero.inventoryList[i][1], hero.inventoryList[i][2]);
+                        }
                     }
                 }
             }
         }
         static void PrintStoreItem(Sword sword, Armor armor, int swordCount, int armorCount, int printType)
         {
+            Console.WriteLine("\t이름\t\t능력치\t\t설명\t\t\t\t    가격");
+            Console.WriteLine("---------------------------------------------------------------------------------------");
             if (printType == 1)
             {
                 for (int i = 0; i < swordCount; i++)
                 {
-                    Console.WriteLine("- {0}\t   | 공격력 +{1}\t | {2}\t | {3}", sword.name[i], sword.atk[i], sword.description[i], sword.value[i]);
+                    Console.WriteLine("- {0}\t   | 공격력 +{1}\t  | {2}\t  | {3}G\n", sword.name[i], sword.atk[i], sword.description[i], sword.value[i]);
                 }
                 for (int i = 0; i < armorCount; i++)
                 {
-                    Console.WriteLine("- {0}\t   | 방어력 +{1}\t | {2}\t | {3}", armor.name[i], armor.def[i], armor.description[i], armor.value[i]);
+                    Console.WriteLine("- {0}\t   | 방어력 +{1}\t  | {2}\t  | {3}G\n", armor.name[i], armor.def[i], armor.description[i], armor.value[i]);
                 }
             }
             else if (printType == 2)
             {
                 for (int i = 0; i < swordCount; i++)
                 {
-                    Console.WriteLine("-{0} {1}\t | 공격력 +{2}\t | {3}\t | {4}", i + 1, sword.name[i], sword.atk[i], sword.description[i], sword.value[i]);
+                    Console.WriteLine("{0} {1}\t | 공격력 +{2}\t  | {3}\t  | {4}G\n", i + 1, sword.name[i], sword.atk[i], sword.description[i], sword.value[i]);
                 }
                 for (int i = 0; i < armorCount; i++)
                 {
-                    Console.WriteLine("-{0} {1}\t | 방어력 +{2}\t | {3}\t | {4}", i + 1 + swordCount, armor.name[i], armor.def[i], armor.description[i], armor.value[i]);
+                    Console.WriteLine("{0} {1}\t | 방어력 +{2}\t  | {3}\t  | {4}G\n", i + 1 + swordCount, armor.name[i], armor.def[i], armor.description[i], armor.value[i]);
                 }
             }
+            Console.WriteLine("---------------------------------------------------------------------------------------\n");
         }
         static void GetSomeRest(Hero hero)
         {
@@ -805,11 +928,13 @@ namespace SD
                 hero.stats[2] = 100;
                 hero.gold -= 500;
                 Console.Clear();
-                Console.WriteLine("휴식을 충분히 취했습니다.\n");
+            RestMain1:
+                Console.WriteLine("\n휴식을 충분히 취했습니다.\n");
                 Console.WriteLine("체력이 100으로 회복되었습니다.");
 
                 Console.WriteLine("0.나가기");
-                Console.WriteLine("버튼을 눌러주세요");
+                Console.WriteLine("\n번호를 입력해주세요");
+                Console.Write(">>");
 
                 getInt = Input(Console.ReadLine());
                 if (getInt == 0)
@@ -818,15 +943,19 @@ namespace SD
                 }
                 else
                 {
-                    return;
+                    Console.Clear();
+                    Console.WriteLine("잘못된 값 입력함");
+                    goto RestMain1;
                 } 
             }
             else
             {
                 Console.Clear();
-                Console.WriteLine("골드가 부족합니다.\n");
+            RestMain2:
+                Console.WriteLine("\n골드가 부족합니다.\n");
                 Console.WriteLine("0.나가기");
-                Console.WriteLine("버튼을 눌러주세요");
+                Console.WriteLine("\n번호를 입력해주세요");
+                Console.Write(">>");
 
                 getInt = Input(Console.ReadLine());
                 if (getInt == 0)
@@ -835,7 +964,9 @@ namespace SD
                 }
                 else
                 {
-                    return;
+                    Console.Clear();
+                    Console.WriteLine("잘못된 값 입력함");
+                    goto RestMain2;
                 }
             }
         }
@@ -850,7 +981,6 @@ namespace SD
             catch (FormatException)
             {
                 Console.WriteLine("잘못된 값 입력함");
-                //goto FirstMain;
                 return 0;
             }
         }
@@ -860,12 +990,19 @@ namespace SD
             int iValue = 0, result = 0, iNum = 0;
             int goldGain = 0;
             int damage = dunLevel - myDefence;
+            int extraDmg = 0;
             int[] iLevUP = [0, 0];
             if (myDefence > dunLevel)
             {
                 iValue = rand.Next(20, 36);
                 hero.stats[2] -= iValue + damage;
                 iLevUP = GetExp(hero, dunLevel);
+
+                if (hero.stats[2] <= 0)
+                {
+                    HeroDie(hero);
+                }
+
                 result = 1;
             }
             else if (myDefence <= dunLevel)
@@ -874,9 +1011,14 @@ namespace SD
                 if (iValue < 4)
                 {
                     //던전공략실패
-                    hero.stats[2] /= 2;
-                    hero.stats[2] -= iValue + damage;
-                    
+                    extraDmg = hero.stats[2] / 2;
+                    hero.stats[2] -= iValue + damage + extraDmg;
+
+                    if (hero.stats[2] <= 0)
+                    {
+                        HeroDie(hero);
+                    }
+
                     result = 0;
                 }
                 else
@@ -884,6 +1026,12 @@ namespace SD
                     iValue = rand.Next(20, 36);
                     hero.stats[2] -= iValue + damage;
                     iLevUP = GetExp(hero, dunLevel);
+
+                    if (hero.stats[2] <= 0)
+                    {
+                        HeroDie(hero);
+                    }
+
                     result = 1;
                 }
             }
@@ -905,7 +1053,8 @@ namespace SD
                 hero.gold += goldGain;
 
                 Console.Clear();
-                Console.WriteLine("던전을 클리어 하였습니다.\n");
+            DunClearMain:
+                Console.WriteLine("\n던전을 클리어 하였습니다.\n");
 
                 Console.WriteLine("체력 : {0} -> {1}", hero.stats[2] + iValue + damage, hero.stats[2]);
                 Console.WriteLine("Gold : {0} -> {1}", hero.gold - goldGain, hero.gold);
@@ -921,7 +1070,8 @@ namespace SD
                 }
 
                     Console.WriteLine("\n0.확인");
-                Console.WriteLine("버튼을 눌러주세요");
+                Console.WriteLine("\n번호를 입력해주세요");
+                Console.Write(">>");
 
                 iNum = Input(Console.ReadLine());
 
@@ -929,18 +1079,25 @@ namespace SD
                 {
                     return;
                 }
-                else return;
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("잘못된 값 입력함");
+                    goto DunClearMain;
+                }
             }
             else
             {
                 Console.Clear();
-                Console.WriteLine("던전을 클리어 하지 못했습니다.\n");
+            DunFailMain:
+                Console.WriteLine("\n던전을 클리어 하지 못했습니다.\n");
 
-                Console.WriteLine("체력 : {0} -> {1}", hero.stats[2] + iValue + damage, hero.stats[2]);
+                Console.WriteLine("체력 : {0} -> {1}", hero.stats[2] + iValue + damage + extraDmg, hero.stats[2]);
                 Console.WriteLine("Gold : {0} -> {1}", hero.gold - goldGain, hero.gold);
 
                 Console.WriteLine("\n0.확인\n");
-                Console.WriteLine("버튼을 눌러주세요");
+                Console.WriteLine("\n번호를 입력해주세요");
+                Console.Write(">>");
 
                 iNum = Input(Console.ReadLine());
 
@@ -948,7 +1105,12 @@ namespace SD
                 {
                     return;
                 }
-                else return;
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("잘못된 값 입력함");
+                    goto DunFailMain;
+                }
             }
 
         }
@@ -996,6 +1158,33 @@ namespace SD
             }
             return count;
         }
+        static void HeroDie(Hero hero)
+        {
+            int getInt;
 
+            Console.Clear();
+        DieMain:
+            Console.WriteLine("\n사망하였습니다...");
+
+            Console.WriteLine("1.나가기");
+            Console.WriteLine("번호을 입력해 주세요");
+            Console.Write(">>");
+
+            getInt = Input(Console.ReadLine());
+
+            if (getInt == 1)
+            {
+                Console.Clear();
+                Console.WriteLine("종료합니다. 아무키나 눌러주세요");
+                Console.ReadLine();
+                Environment.Exit(0);
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("잘못된 입력입니다.");
+                goto DieMain;
+            }
+        }
     }
 }
