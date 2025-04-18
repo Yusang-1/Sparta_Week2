@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pc\\Desktop\\Sparta\\Week2\\SD\\SD\\SD.csproj": {}
+    "C:\\Users\\pc\\Desktop\\Sparta\\Week2\\SD_GIt\\SD\\SD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pc\\Desktop\\Sparta\\Week2\\SD\\SD\\SD.csproj": {
+    "C:\\Users\\pc\\Desktop\\Sparta\\Week2\\SD_GIt\\SD\\SD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Desktop\\Sparta\\Week2\\SD\\SD\\SD.csproj",
+        "projectUniqueName": "C:\\Users\\pc\\Desktop\\Sparta\\Week2\\SD_GIt\\SD\\SD.csproj",
         "projectName": "SD",
-        "projectPath": "C:\\Users\\pc\\Desktop\\Sparta\\Week2\\SD\\SD\\SD.csproj",
+        "projectPath": "C:\\Users\\pc\\Desktop\\Sparta\\Week2\\SD_GIt\\SD\\SD.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Desktop\\Sparta\\Week2\\SD\\SD\\obj\\",
+        "outputPath": "C:\\Users\\pc\\Desktop\\Sparta\\Week2\\SD_GIt\\SD\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

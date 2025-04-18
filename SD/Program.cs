@@ -1,4 +1,5 @@
 ﻿using System.Dynamic;
+using System.Xml;
 
 namespace SD
 {
@@ -35,7 +36,7 @@ namespace SD
         class Gear
         {
             public string[] name;
-            public string[] description;
+            public string[] description; 
             public string[] value;
             public string[] equipped;
             public string[] sellValue;
@@ -104,23 +105,26 @@ namespace SD
             if (getInt == 1)
             {
                 ShowStats(hero);
+                Console.Clear();
                 goto SecondMain;
             }
             else if (getInt == 2)
             {
                 ShowInventory(hero);
+                Console.Clear();
                 goto SecondMain;
             }
             else if (getInt == 3)
             {
                 ShowStore(sword, armor, hero);
+                Console.Clear();
                 goto SecondMain;
             }
             else if (getInt == 4)
             {
                 int result;
                 Console.Clear();
-                Console.WriteLine("던전 Lv1\t방어력 5이상 권장\n");
+                Console.WriteLine("\n던전 Lv1\t방어력 5이상 권장\n");
                 Console.WriteLine("던전 Lv2\t방어력 11이상 권장\n");
                 Console.WriteLine("던전 Lv3\t방어력 17이상 권장\n");
                 Console.WriteLine("0.나가기");
@@ -156,7 +160,7 @@ namespace SD
             else if (getInt == 5)
             {
                 Console.Clear();
-                Console.WriteLine("500골드를 내고 휴식을 취하시겠습니까?\n");
+                Console.WriteLine("\n500골드를 내고 휴식을 취하시겠습니까?\n");
                 Console.WriteLine("현재 보유 골드 : {0}\n", hero.gold);
                 Console.WriteLine("1.예  2.아니요\n");
                 Console.Write(">>");
@@ -361,7 +365,7 @@ namespace SD
             
             Console.Clear();
         StoreAgain:
-            Console.WriteLine("\t[상점]\t\n");
+            Console.WriteLine("\n\t[상점]\t\n");
 
             PrintStoreItem(sword, armor, swordCount, armorCount, 1);
             Console.WriteLine("\n\t\t\t골드 : {0}G", hero.gold);
